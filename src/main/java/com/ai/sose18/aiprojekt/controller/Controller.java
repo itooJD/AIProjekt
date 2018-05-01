@@ -11,8 +11,8 @@ public class Controller {
     private ArrayList<Profil> guards = new ArrayList<>();
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public void login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
-
+    public String login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+        return "success";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.DELETE)
