@@ -13,4 +13,8 @@ public class Profil {
     public String toString() {
         return this.email;
     }
+
+    public String getEmail(){
+        return this.email;
+    }
 }
