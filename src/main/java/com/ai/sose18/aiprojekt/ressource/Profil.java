@@ -8,4 +8,8 @@ public class Profil {
         this.email = email;
         this.password = password;
     }
+
+    public String getEmail(){
+        return this.email;
+    }
 }
