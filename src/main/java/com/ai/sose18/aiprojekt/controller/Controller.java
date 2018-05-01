@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @RestController
 public class Controller {
 
-    private ArrayList<Profil> guards;
+    private ArrayList<Profil> guards = new ArrayList<>();
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
@@ -25,10 +25,11 @@ public class Controller {
         return guards.get(guardId);
     }
 
-    @RequestMapping(value = "/registry")
+    @RequestMapping(value = "/registry", method = RequestMethod.POST)
     public Profil register(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password){
-        Profil guardProfil = new Profil(email,password);
-        guards.add(guardProfil);
-        return guardProfil;
+        Profil guardProfile = new Profil(email,password);
+        guards.add(guardProfile);
+        return guardProfile;
     }
+
 }
