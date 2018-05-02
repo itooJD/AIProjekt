@@ -13,6 +13,7 @@ public class Profil {
     private Long id;
     private String email;
     private String password;
+    private Boolean loggedIn;
 
     protected Profil() {
     }
@@ -20,6 +21,7 @@ public class Profil {
     public Profil(String email, String password) {
         this.email = email;
         this.password = password;
+        this.loggedIn = false;
     }
 
     public String getEmail() {
@@ -28,6 +30,10 @@ public class Profil {
 
     public String getPassword() {
         return this.password;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
 
     @Override
