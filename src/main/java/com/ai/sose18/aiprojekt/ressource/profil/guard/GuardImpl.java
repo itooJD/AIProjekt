@@ -2,7 +2,6 @@ package com.ai.sose18.aiprojekt.ressource.profil.guard;
 
 
 import com.ai.sose18.aiprojekt.ressource.profil.ProfilRepository;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,14 +27,28 @@ public class GuardImpl implements GuardInterface {
         Optional<Guard> guard_load = this.profilRepository.findById(id);
         if (guard_load.isPresent()) {
             return this.profilRepository.findById(id).get();
-        } else {
-            return null;
         }
+        return null;
+
     }
 
     @Override
-    public Boolean login(Guard guard) {
+    public Guard login(Guard guard) {
         Optional<Guard> guard_load = this.profilRepository.findByEmail(guard.getEmail());
-        return guard_load.isPresent() && guard_load.get().getPassword().equals(guard.getPassword());
+        if (guard_load.isPresent() && guard_load.get().getPassword().equals(guard.getPassword())) {
+            guard_load.get().setLoggedIn(true);
+            return guard_load.get();
+        }
+        return null;
+    }
+
+    @Override
+    public Guard logout(Guard guard) {
+        Optional<Guard> guard_load = this.profilRepository.findByEmail(guard.getEmail());
+        if (guard_load.isPresent() && guard_load.get().getPassword().equals(guard.getPassword())) {
+            guard_load.get().setLoggedIn(false);
+            return guard_load.get();
+        }
+        return null;
     }
 }
