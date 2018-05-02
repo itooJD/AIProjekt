@@ -14,7 +14,6 @@ public class GuardImpl implements GuardInterface {
     private ProfilRepository<Guard> profilRepository;
 
     public GuardImpl() {
-
     }
 
     @Override
