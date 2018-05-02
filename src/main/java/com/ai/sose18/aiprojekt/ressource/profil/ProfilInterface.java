@@ -6,5 +6,7 @@ public interface ProfilInterface<T extends Profil> {
 
     T getById(Long id);
 
-    Boolean login(T obj);
+    T login(T obj);
+
+    T logout(T obj);
 }

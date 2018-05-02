@@ -7,25 +7,21 @@ import com.ai.sose18.aiprojekt.ressource.profil.guard.GuardInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @RestController
 public class Controller {
-
-
-    private ArrayList<Profil> guards = new ArrayList<>();
 
     @Autowired
     private GuardInterface guardInterface = new GuardImpl();
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Boolean login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+    public Profil login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
         return guardInterface.login(new Guard(email, password));
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.DELETE)
-    public String logout() {
-        return "success";
+    public Profil logout(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+        return guardInterface.logout(new Guard(email, password));
     }
 
     @RequestMapping(value = "/guard/{id}", method = RequestMethod.GET)
